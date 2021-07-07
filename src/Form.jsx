@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { TextField, FormControl, FormGroup, Select, MenuItem, InputLabel, Input, Button } 
+import { SubTypeInput } from './Components'
+import { dishTypesData } from './data'
+import { TextField, FormControl, Select, MenuItem, InputLabel, Button } 
     from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import TimeField from 'react-simple-timefield'
@@ -31,127 +33,6 @@ const useStyles = makeStyles(theme=>({
         }
     }
 }))
-
-const dishTypesData = [
-    {
-        name: 'pizza',
-        options: {
-            no_of_slices: 0, 
-            diameter: 0,
-            type: 'number'
-        }
-    },
-    {
-        name: 'soup',
-        options: {
-            spiciness_scale: 0, 
-        }
-    },
-    {
-        name: 'sandwich',
-        options: {
-            slices_of_bread: 0, 
-        }
-    }
-]
-
-function PizzaInputs({ handleChangeValues, formValues }) {
-    return(
-        <>
-            <InputLabel id='no_of_slices-label' required >number of slices</InputLabel>
-            <Input 
-                id='no_of_slices'
-                name='no_of_slices'
-                labelid='no_of_slices-label'
-                value={formValues.no_of_slices}
-                type='number' 
-                variant='outlined' 
-                inputProps={{step: '0', min: '1', max: '8'}}
-                onChange={handleChangeValues}
-                required
-            />
-            
-            <InputLabel id='diameter-label' required>diameter</InputLabel>
-            <Input 
-                id='diameter'
-                name='diameter'
-                labelid='diameter-label'
-                value={formValues.diameter}
-                type='number' 
-                variant='outlined'  
-                inputProps={{step: '0.1'}}
-                onChange={handleChangeValues}
-                required
-            />
-        </>
-    )
-}
-
-function SoupInputs({ handleChangeValues, formValues }) {
-    return(
-        <>
-            <InputLabel id='spiciness_scale-label' required >spiciness scale</InputLabel>
-            <Input 
-                id='spiciness_scale'
-                name='spiciness_scale'
-                labelid='spiciness_scale-label'
-                value={formValues.spiciness_scale}
-                type='number' 
-                variant='outlined' 
-                inputProps={{step: '0', min: '1', max: '8'}}
-                onChange={handleChangeValues}
-            />
-        </>
-    )
-}
-
-function SandwichInputs({ handleChangeValues, formValues }) {
-    return(
-        <>
-            <InputLabel id='slices_of_bread-label' required >slices of bread</InputLabel>
-            <Input 
-                id='slices_of_bread'
-                name='slices_of_bread'
-                labelid='slices_of_bread-label'
-                value={formValues.slices_of_bread}
-                type='number' 
-                variant='outlined' 
-                onChange={handleChangeValues}
-            />
-        </>
-    )
-}
-
-const SubTypeInput = props => {
-    const {name, formValues, handleChangeValues } = props
-    const classes = useStyles()
-
-    let inputs
-    if(name === 'pizza'){
-        inputs = <PizzaInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
-    } else if(name === 'soup'){
-        inputs = <SoupInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
-    } else if(name === 'sandwich'){
-        inputs = <SandwichInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
-    }
-
-    return (
-        <FormGroup className={classes.formControl} required>
-        { 
-            inputs
-        }
-        </FormGroup>
-    )
-}
 
 export default function Form() {
     const classes = useStyles()
@@ -211,7 +92,8 @@ export default function Form() {
                         handleChangeValues={handleChangeValues}
                         /> 
                 : 
-                    null}
+                    null
+                }
 
                 <Button
                     variant="contained"
