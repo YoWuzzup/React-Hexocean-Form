@@ -35,17 +35,33 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
+function contains(target, pattern){
+    var value = 0;
+    pattern.forEach(function(word){
+      value = value + target.includes(word);
+    });
+    return (value === 1)
+}
+
 export default function Form() {
     const classes = useStyles()
     // useState for every input value
     const [formValues, setFormValues] = useState({
         name: '',
-        time: '',
+        preparation_time: '',
         dishType: '',
     })
 
     const handleChangeValues = e =>{
-        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+        const str = e.target.name
+        const arr = ['no_of_slices', 'diameter', 'slices_of_bread', 'spiciness_scale']
+        
+        if(contains(str, arr)){
+            setFormValues({ ...formValues, [e.target.name]: Number(e.target.value)})
+        } else {
+            setFormValues({ ...formValues, [e.target.name]: e.target.value})
+        }
+        
     }
 
     const handleSubmit = e =>{
@@ -53,7 +69,7 @@ export default function Form() {
 
         api.postData(formValues)
     }
-
+    
     return (
         <div className={classes.root}>
             <form className={classes.form} 
@@ -65,9 +81,9 @@ export default function Form() {
                 
                 <TimeField
                     showSeconds
-                    value={formValues.time} 
-                    onChange={handleChangeValues} name='time' required
-                    input={<TextField label="Preparation time" value={formValues.time} variant="outlined" required />}
+                    value={formValues.preparation_time} 
+                    onChange={handleChangeValues} name='preparation_time' required
+                    input={<TextField label="Preparation time" value={formValues.preparation_time} variant="outlined" required />}
                 />    
 
                 <FormControl className={classes.formControl} required>

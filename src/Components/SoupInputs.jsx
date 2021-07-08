@@ -10,7 +10,7 @@ export default function SoupInputs({ handleChangeValues, formValues }) {
                 name='spiciness_scale'
                 labelid='spiciness_scale-label'
                 value={formValues.spiciness_scale || ''}
-                type='number' 
+                type='number'
                 variant='outlined' 
                 inputProps={{step: '0', min: '1', max: '8'}}
                 onChange={handleChangeValues}

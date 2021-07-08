@@ -5,7 +5,6 @@ const url = 'http://localhost:5000/t'
 export const postData = async (newItem)=>{
     try {
         axois.post(`${url}`, newItem)
-        console.log(newItem);
     } catch (error) {
         alert(`Sorry something went wrong: ${error}`)
     }
