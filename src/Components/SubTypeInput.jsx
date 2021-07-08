@@ -30,7 +30,7 @@ export default function SubTypeInput(props) {
     }
 
     return (
-        <FormGroup required>
+        <FormGroup >
         { 
             inputs
         }

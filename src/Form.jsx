@@ -49,7 +49,7 @@ export default function Form() {
     const [formValues, setFormValues] = useState({
         name: '',
         preparation_time: '',
-        dishType: '',
+        type: '',
     })
 
     const handleChangeValues = e =>{
@@ -85,12 +85,12 @@ export default function Form() {
                 />    
 
                 <FormControl className={classes.formControl} required>
-                    <InputLabel id='dishType-label'>Dish type</InputLabel>
+                    <InputLabel id='type-label'>Dish type</InputLabel>
                     <Select
-                        labelId='dishType-label'
-                        id='dishType'
-                        name='dishType'
-                        value={`${formValues.dishType}`}
+                        labelId='type-label'
+                        id='type'
+                        name='type'
+                        value={`${formValues.type}`}
                         onChange={handleChangeValues} 
                     >
                         {dishTypesData && dishTypesData.map((item, index) => {
@@ -104,9 +104,9 @@ export default function Form() {
                     </Select>
                 </FormControl>
 
-                {formValues.dishType ? 
+                {formValues.type ? 
                     <SubTypeInput 
-                        name={formValues.dishType} 
+                        name={formValues.type} 
                         formValues={formValues} 
                         handleChangeValues={handleChangeValues}
                         /> 

@@ -5,7 +5,7 @@ import { InputLabel, Input } from '@material-ui/core'
 const baseInputComponent = props =>{
     return(
     <>
-        <InputLabel id={`${props.name}-label`} >{props.input}</InputLabel>
+        <InputLabel id={`${props.name}-label`} required={props.required} >{props.input}</InputLabel>
         <Input {...props} />
     </>)
 }
