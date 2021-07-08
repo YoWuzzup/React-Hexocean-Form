@@ -9,7 +9,7 @@ export default function PizzaInputs({ handleChangeValues, formValues }) {
                 id='no_of_slices'
                 name='no_of_slices'
                 labelid='no_of_slices-label'
-                value={formValues.no_of_slices}
+                value={formValues.no_of_slices || ''}
                 type='number' 
                 variant='outlined' 
                 inputProps={{step: '0', min: '1', max: '8'}}
@@ -22,7 +22,7 @@ export default function PizzaInputs({ handleChangeValues, formValues }) {
                 id='diameter'
                 name='diameter'
                 labelid='diameter-label'
-                value={formValues.diameter}
+                value={formValues.diameter || ''}
                 type='number' 
                 variant='outlined'  
                 inputProps={{step: '0.1'}}

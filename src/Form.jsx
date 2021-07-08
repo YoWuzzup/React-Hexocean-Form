@@ -5,6 +5,7 @@ import { TextField, FormControl, Select, MenuItem, InputLabel, Button }
     from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import TimeField from 'react-simple-timefield'
+import * as api from './api'
 
 const useStyles = makeStyles(theme=>({
     root:{
@@ -41,19 +42,23 @@ export default function Form() {
         name: '',
         time: '',
         dishType: '',
-        no_of_slices: 0,
-        diameter: 0,
-        spiciness_scale: 1,
-        slices_of_bread: 0
     })
 
     const handleChangeValues = e =>{
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
     }
 
+    const handleSubmit = e =>{
+        e.preventDefault()
+
+        api.postData(formValues)
+    }
+
     return (
         <div className={classes.root}>
-            <form className={classes.form} >
+            <form className={classes.form} 
+                onSubmit={handleSubmit}
+            >
                 <TextField id="standard-basic" name='name' label="Name" 
                     onChange={handleChangeValues} required
                 />
