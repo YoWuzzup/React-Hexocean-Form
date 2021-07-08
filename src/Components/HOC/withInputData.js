@@ -1,12 +1,22 @@
 import React from 'react'
+import { InputLabel, Input } from '@material-ui/core'
 
-const  withInputData = (WrappedComponent, props) => {
-    console.log(props);
+// the wrapped component
+const baseInputComponent = props =>{
+    return(
+    <>
+        <InputLabel id={`${props.name}-label`} >{props.input}</InputLabel>
+        <Input {...props} />
+    </>)
+}
+
+// the HOC
+const  withInputData = (WrappedComponent) => {
     return (props) => (
-        <div >
+        <>
             <WrappedComponent {...props} />
-        </div>
+        </>
     );
 }
 
-export default withInputData
+export const WithData = withInputData(baseInputComponent)

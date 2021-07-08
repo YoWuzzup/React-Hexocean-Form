@@ -6,21 +6,27 @@ export default function SubTypeInput(props) {
     const {name, formValues, handleChangeValues } = props
 
     let inputs
-    if(name === 'pizza'){
-        inputs = <PizzaInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
-    } else if(name === 'soup'){
-        inputs = <SoupInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
-    } else if(name === 'sandwich'){
-        inputs = <SandwichInputs 
-                    handleChangeValues={handleChangeValues} 
-                    formValues={formValues}
-                />
+    switch (name) {
+        case 'pizza':
+            inputs = <PizzaInputs 
+                handleChangeValues={handleChangeValues} 
+                formValues={formValues}
+            />
+            break;
+        case 'soup':
+            inputs = <SoupInputs 
+                handleChangeValues={handleChangeValues} 
+                formValues={formValues}
+            />
+            break;
+        case 'sandwich':
+            inputs = <SandwichInputs 
+                handleChangeValues={handleChangeValues} 
+                formValues={formValues}
+            />
+            break;
+        default:
+            break;
     }
 
     return (

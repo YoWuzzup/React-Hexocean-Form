@@ -53,15 +53,13 @@ export default function Form() {
     })
 
     const handleChangeValues = e =>{
-        const str = e.target.name
-        const arr = ['no_of_slices', 'diameter', 'slices_of_bread', 'spiciness_scale']
+        const name = e.target.name
+        const namesToCheck = ['no_of_slices', 'diameter', 'slices_of_bread', 'spiciness_scale']
         
-        if(contains(str, arr)){
+        contains(name, namesToCheck) ?
             setFormValues({ ...formValues, [e.target.name]: Number(e.target.value)})
-        } else {
+        :
             setFormValues({ ...formValues, [e.target.name]: e.target.value})
-        }
-        
     }
 
     const handleSubmit = e =>{
@@ -69,7 +67,7 @@ export default function Form() {
 
         api.postData(formValues)
     }
-    
+
     return (
         <div className={classes.root}>
             <form className={classes.form} 

@@ -1,11 +1,10 @@
 import React from 'react'
-import { InputLabel, Input } from '@material-ui/core'
+import { WithData } from './HOC/withInputData'
 
 export default function SandwichInputs({ handleChangeValues, formValues }) {
     return(
         <>
-            <InputLabel id='slices_of_bread-label' required >slices of bread</InputLabel>
-            <Input 
+            <WithData
                 id='slices_of_bread'
                 name='slices_of_bread'
                 labelid='slices_of_bread-label'
@@ -13,6 +12,8 @@ export default function SandwichInputs({ handleChangeValues, formValues }) {
                 type='number' 
                 variant='outlined' 
                 onChange={handleChangeValues}
+                required
+                input={'slices of bread'}
             />
         </>
     )
