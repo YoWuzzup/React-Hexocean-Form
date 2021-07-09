@@ -48,7 +48,7 @@ export default function Form() {
     // useState for every input value
     const [formValues, setFormValues] = useState({
         name: '',
-        preparation_time: '',
+        preparation_time: '00:00:00',
         type: '',
     })
 
